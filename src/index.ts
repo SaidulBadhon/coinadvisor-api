@@ -12,6 +12,8 @@ import recommendation from "./routes/recommendation";
 import portfolio from "./routes/portfolio";
 import fearGreed from "./routes/fearGreed";
 import { connectToDatabase } from "./database/models";
+import copilot from "./routes/copilot.routes";
+import { cors } from "hono/cors";
 
 // const avatarId = "a71eb6789ab04568a14e1cf5166a7c5d";
 // const voiceId = "6d091fbb994c439eb9d249ba8b0e62da";
@@ -22,6 +24,14 @@ const app = new Hono();
 // Initialize database connection
 connectToDatabase().catch(console.error);
 
+// Cors
+app.use(
+  "*",
+  cors({
+    origin: "*",
+    allowMethods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+  })
+);
 app.get("/", (ctx) => {
   return ctx.text("Hello Hono!");
 });
@@ -29,6 +39,7 @@ app.get("/", (ctx) => {
 app.route("/api", recommendation);
 app.route("/api/portfolios", portfolio);
 app.route("/api/fear-greed", fearGreed);
+app.route("/api/copilot", copilot);
 
 // 1️⃣ Risk Profiling endpoint
 app.post("/risk-profile", async (c) => {
