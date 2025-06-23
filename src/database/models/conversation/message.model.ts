@@ -2,7 +2,7 @@
 import { Schema, model, Types } from "mongoose";
 
 export interface IMessage {
-  conversationId: Types.ObjectId;
+  // conversationId: Types.ObjectId;
   model: "gpt-4" | "gpt-4o" | "gpt-4.1-nano";
   role: "user" | "assistant";
 
@@ -22,12 +22,12 @@ export interface IMessage {
 
 const MessageSchema = new Schema<IMessage>(
   {
-    conversationId: {
-      type: Schema.Types.ObjectId,
-      ref: "Conversation",
-      required: true,
-      index: true,
-    },
+    // conversationId: {
+    //   type: Schema.Types.ObjectId,
+    //   ref: "Conversation",
+    //   required: true,
+    //   index: true,
+    // },
     model: {
       type: String,
       required: false,

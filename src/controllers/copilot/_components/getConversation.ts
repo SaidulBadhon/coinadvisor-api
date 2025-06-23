@@ -5,16 +5,16 @@ export const getConversation = async ({
   conversationId,
   newConversationId,
   message,
-  user,
 }: {
   conversationId?: string;
   newConversationId: string;
   message: string;
-  user: any;
 }) => {
   try {
     // Load or create conversation
     let conversation: any;
+
+    console.log("getConversation: conversationId=", conversationId);
 
     if (!conversationId) {
       const xs = generateSecureObjectId();
@@ -28,7 +28,6 @@ export const getConversation = async ({
       conversation = await Conversation.create({
         _id: xs,
         title: message?.slice(0, 24) || "New Conversation",
-        createdBy: user._id,
         metadata: {},
         lastUpdated: new Date(),
       });
@@ -36,7 +35,6 @@ export const getConversation = async ({
       console.log("sendMessage: loading conversation");
       conversation = await Conversation.findOne({
         _id: conversationId || generateSecureObjectId(),
-        createdBy: user._id,
       });
     }
 
@@ -47,6 +45,7 @@ export const getConversation = async ({
       error: null,
     };
   } catch (error: any) {
+    console.error("Error in getConversation:", error);
     return {
       data: {},
       error: error,
