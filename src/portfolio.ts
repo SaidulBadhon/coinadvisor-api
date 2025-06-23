@@ -201,6 +201,9 @@ export async function getUserPortfolios(
 
   try {
     const portfolios = await Portfolio.find({ userId }).sort({ createdAt: -1 });
+
+    console.log("========> getUserPortfolios", portfolios);
+
     return portfolios.map(toPortfolioData);
   } catch (error) {
     console.error("Error fetching user portfolios:", error);
