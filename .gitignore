@@ -1,0 +1,64 @@
+# Dependencies
+node_modules/
+bun.lockb
+
+# Environment variables
+.env
+.env.local
+.env.development
+.env.production
+.env.docker
+.env.*
+
+# Runtime & Build
+dist/
+build/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Database
+*.db
+*.sqlite
+*.sqlite3
+
+# Docker
+.docker/
+docker-compose.override.yml
+
+# Coverage & Testing
+coverage/
+.nyc_output/
+*.lcov
+
+# Temporary files
+tmp/
+temp/
+.cache/
+
+# API Keys & Secrets
+config/secrets.json
+*.pem
+*.key
+*.crt
+
+# Local configuration
+local.json
+config/local.*
